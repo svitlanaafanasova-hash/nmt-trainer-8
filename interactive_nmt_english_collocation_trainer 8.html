@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НМТ Англійська: Тренажер Колокацій (Дозвілля, наука та технології)</title>
+    <style>
+        /* CSS RESET & VARIABLES */
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-subtle: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-light: #eff6ff;
+            --success-color: #16a34a;
+            --success-bg: #f0fdf4;
+            --error-color: #dc2626;
+            --error-bg: #fef2f2;
+            --warning-color: #d97706;
+            --warning-bg: #fffbeb;
+            --border-color: #e2e8f0;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #0f172a;
+                --bg-card: #1e293b;
+                --bg-card-subtle: #334155;
+                --text-primary: #f8fafc;
+                --text-secondary: #cbd5e1;
+                --text-muted: #94a3b8;
+                --accent-color: #3b82f6;
+                --accent-hover: #60a5fa;
+                --accent-light: #1e3a8a;
+                --success-color: #22c55e;
+                --success-bg: #14532d;
+                --error-color: #ef4444;
+                --error-bg: #7f1d1d;
+                --warning-color: #f59e0b;
+                --warning-bg: #78350f;
+                --border-color: #334155;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.25rem;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* NAVIGATION TABS */
+        nav {
+            display: flex;
+            background-color: var(--bg-card);
+            padding: 0.25rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            gap: 0.25rem;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.6rem 0.75rem;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background-color: var(--bg-card-subtle);
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .tab-btn:focus-visible, button:focus-visible, input:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* TAB CONTENT PANELS */
+        .tab-panel {
+            display: none;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* CARD FLASHCARDS (TAB 1) */
+        .flashcard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            min-height: 320px;
+            justify-content: center;
+        }
+
+        .flashcard {
+            width: 100%;
+            background-color: var(--bg-card-subtle);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .badge-starred {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--warning-bg);
+            color: var(--warning-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid var(--warning-color);
+        }
+
+        .flashcard .english-phrase {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+        }
+
+        .flashcard .ukrainian-translation {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .flashcard .example-sentence {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            background-color: var(--bg-card);
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-color);
+            text-align: left;
+        }
+
+        .flashcard .trap-info {
+            font-size: 0.85rem;
+            color: var(--error-color);
+            background-color: var(--error-bg);
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: #ffffff;
+        }
+
+        .btn-success:hover { opacity: 0.9; }
+
+        .btn-error {
+            background-color: var(--error-color);
+            color: #ffffff;
+        }
+
+        .btn-error:hover { opacity: 0.9; }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover { background-color: var(--accent-hover); }
+
+        .btn-secondary {
+            background-color: var(--bg-card-subtle);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover { background-color: var(--border-color); }
+
+        /* QUIZ / PRACTICE / TEST STYLES */
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .question-text .blank {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 2px solid var(--accent-color);
+            text-align: center;
+            color: var(--accent-color);
+            padding: 0 0.25rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .options-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .option-btn {
+            padding: 0.85rem 1rem;
+            background-color: var(--bg-card-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--accent-color);
+            background-color: var(--accent-light);
+        }
+
+        .option-btn.selected-correct {
+            background-color: var(--success-bg) !important;
+            border-color: var(--success-color) !important;
+            color: var(--success-color) !important;
+            font-weight: 700;
+        }
+
+        .option-btn.selected-incorrect {
+            background-color: var(--error-bg) !important;
+            border-color: var(--error-color) !important;
+            color: var(--error-color) !important;
+            font-weight: 700;
+        }
+
+        /* EXPLANATION BOX */
+        .explanation-box {
+            background-color: var(--bg-card-subtle);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .explanation-box .clue-highlight {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .explanation-list {
+            list-style-type: none;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-top: 0.5rem;
+        }
+
+        .explanation-list li {
+            padding: 0.35rem 0.5rem;
+            border-radius: var(--radius-sm);
+            background-color: var(--bg-card);
+        }
+
+        /* TYPE PRACTICE INPUT */
+        .type-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .type-input {
+            width: 100%;
+            padding: 0.85rem;
+            font-size: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .type-input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        /* RESULTS SCREEN */
+        .results-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+            border: 4px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+        .stat-card {
+            background-color: var(--bg-card-subtle);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-card h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-card p {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .mistakes-list {
+            text-align: left;
+            font-size: 0.9rem;
+            background-color: var(--bg-card-subtle);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .mistakes-list li {
+            margin-bottom: 0.5rem;
+            color: var(--error-color);
+        }
+
+        /* TOAST MESSAGE */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--text-primary);
+            color: var(--bg-card);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>НМТ Англійська: Дозвілля, наука та технології</h1>
+            <p>Інтерактивний тренажер колокацій для учнів 10–11 класів (Рівень B1–B2)</p>
+        </header>
+
+        <nav aria-label="Головна навігація">
+            <button class="tab-btn active" onclick="switchTab('learn')">1. Вчу</button>
+            <button class="tab-btn" onclick="switchTab('practice')">2. Тренуюсь</button>
+            <button class="tab-btn" onclick="switchTab('type')">3. Пишу</button>
+            <button class="tab-btn" onclick="switchTab('test')">4. Тест</button>
+        </nav>
+
+        <!-- TAB 1: LEARN (FLASHCARDS WITH LEITNER SYSTEM) -->
+        <section id="panel-learn" class="tab-panel active" aria-labelledby="tab-learn">
+            <div id="flashcard-box" class="flashcard-container">
+                <!-- Card rendered via JS -->
+            </div>
+        </section>
+
+        <!-- TAB 2: PRACTICE (MULTIPLE CHOICE WITH DETAILED EXPLANATIONS) -->
+        <section id="panel-practice" class="tab-panel" aria-labelledby="tab-practice">
+            <div class="quiz-header">
+                <span>Завдання <span id="practice-num">1</span> з 25</span>
+                <span>Режим тренування з підказками</span>
+            </div>
+            <div id="practice-question-box">
+                <!-- Question rendered via JS -->
+            </div>
+        </section>
+
+        <!-- TAB 3: TYPE (FREE TEXT INPUT) -->
+        <section id="panel-type" class="tab-panel" aria-labelledby="tab-type">
+            <div class="quiz-header">
+                <span>Завдання <span id="type-num">1</span> з 25</span>
+                <span>Практика написання</span>
+            </div>
+            <div id="type-question-box">
+                <!-- Question rendered via JS -->
+            </div>
+        </section>
+
+        <!-- TAB 4: TEST (EXAM MODE) -->
+        <section id="panel-test" class="tab-panel" aria-labelledby="tab-test">
+            <div id="test-content">
+                <div class="quiz-header">
+                    <span>Завдання <span id="test-num">1</span> з 25</span>
+                    <span>Режим підсумкового тесту</span>
+                </div>
+                <div id="test-question-box">
+                    <!-- Question rendered via JS -->
+                </div>
+            </div>
+
+            <div id="test-results" class="results-card hidden">
+                <h2>Результати тестування НМТ</h2>
+                <div class="score-circle" id="score-circle">0%</div>
+                <p id="score-text" style="font-weight: 600; color: var(--text-secondary);"></p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Правильних відповідей</h4>
+                        <p id="stat-correct">0 / 25</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Найчастіша пастка</h4>
+                        <p id="stat-trap">-</p>
+                    </div>
+                </div>
+
+                <div style="text-align: left;">
+                    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Фрази, у яких допущено помилки:</h3>
+                    <ul class="mistakes-list" id="mistakes-list">
+                        <li>Помилок немає! Відмінний результат!</li>
+                    </ul>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button class="btn btn-primary" onclick="copyResultsForTeacher()">Скопіювати результат для вчителя</button>
+                    <button class="btn btn-secondary" onclick="restartTest()">Пройти знову</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="toast" class="toast">Повідомлення скопійовано!</div>
+
+    <script>
+        /* DATA ARRAY OF 25 COLLOCATIONS AND QUESTIONS */
+        const collocationsData = [
+            {
+                id: 1,
+                target: "outdoor activities",
+                starred: false,
+                translation: "активності на свіжому повітрі",
+                example: "Danylo prefers outdoor activities like cycling and hiking to playing games inside.",
+                trap: "Пастка: НЕ плутати з 'indoor activities'. У контексті шукайте слова: hiking, cycling, fresh air.",
+                sentence: "Danylo prefers _____ like cycling and hiking to staying indoors all weekend.",
+                answer: "outdoor activities",
+                clue: "cycling and hiking",
+                options: [
+                    { text: "outdoor activities", type: "correct", why: "Правильне словосполучення для активностей на свіжому повітрі (cycling, hiking)." },
+                    { text: "indoor activities", type: "meaning", why: "Indoor означає 'у приміщенні', що суперечить катанню на велосипеді й походам." },
+                    { text: "fresh activities", type: "calque", why: "Fresh activities — пряма калька з української 'свіжі заняття', так не кажуть." },
+                    { text: "outside actions", type: "close-verb", why: "Actions — це окремі дії, а для дозвілля вживається саме activities." }
+                ]
+            },
+            {
+                id: 2,
+                target: "go online",
+                starred: false,
+                translation: "виходити в інтернет",
+                example: "Anna needs to go online to check her exam results on the school portal.",
+                trap: "Пастка: Вживається саме дієслово GO (не do чи enter).",
+                sentence: "Anna had to _____ early in the morning to check her final test results.",
+                answer: "go online",
+                clue: "check her final test results",
+                options: [
+                    { text: "go online", type: "correct", why: "Стале словосполучення 'виходити в мережу/інтернет'." },
+                    { text: "do online", type: "close-verb", why: "З прикметником online не вживається дієслово do." },
+                    { text: "enter online", type: "calque", why: "Enter означає входити в приміщення/систему, але вийти в мережу — це go online." },
+                    { text: "make online", type: "close-verb", why: "Make online граматично та лексично невірно." }
+                ]
+            },
+            {
+                id: 3,
+                target: "browse the web",
+                starred: false,
+                translation: "переглядати веб-сторінки / шукати в інтернеті",
+                example: "Max likes to browse the web for funny memes before going to sleep.",
+                trap: "Пастка: Дієслово browse (не look чи search) вживається з 'the web' або 'the internet'.",
+                sentence: "Max spends thirty minutes every evening to _____ for interesting news and recipes.",
+                answer: "browse the web",
+                clue: "recipes and news",
+                options: [
+                    { text: "browse the web", type: "correct", why: "Browse the web / internet — шукати/переглядати інформацію в інтернеті." },
+                    { text: "look the web", type: "preposition", why: "Дієслово look вимагає прийменника at або for." },
+                    { text: "watch the web", type: "close-verb", why: "Watch вживається для перегляду відео або ТВ, а не веб-сторінок." },
+                    { text: "read the web", type: "other-collocation", why: "Read використовується для книг чи статей, а не для всієї павутини." }
+                ]
+            },
+            {
+                id: 4,
+                target: "social media",
+                starred: false,
+                translation: "соціальні мережі",
+                example: "Olga posted photos from her school graduation on social media.",
+                trap: "Пастка: Використовуйте 'media' (а не nets чи webs). Прийменник: ON social media.",
+                sentence: "Olga decided to take a break from _____ because it was distracting her from studying.",
+                answer: "social media",
+                clue: "distracting her from studying",
+                options: [
+                    { text: "social media", type: "correct", why: "Правильний термін для соцмереж (Instagram, TikTok тощо)." },
+                    { text: "social networks", type: "other-collocation", why: "Хоча варіант існує, у шкільній програмі НМТ стандартом є social media." },
+                    { text: "social webs", type: "calque", why: "Social webs — некоректна калька." },
+                    { text: "public media", type: "meaning", why: "Public media — це суспільні ЗМІ (радіо, ТБ), а не приватні соцмережі." }
+                ]
+            },
+            {
+                id: 5,
+                target: "keep up with technology",
+                starred: false,
+                translation: "йти в ногу з технологіями",
+                example: "Teachers must keep up with technology to create interactive online lessons.",
+                trap: "Пастка: Обов'язковий прийменник WITH у фразі 'keep up with'.",
+                sentence: "Grandparents often find it challenging to _____ because gadgets change so rapidly.",
+                answer: "keep up with technology",
+                clue: "gadgets change so rapidly",
+                options: [
+                    { text: "keep up with technology", type: "correct", why: "Правильне фразове дієслово keep up with (встигати за чем-небудь)." },
+                    { text: "keep up to technology", type: "preposition", why: "Хибний прийменник to замість with." },
+                    { text: "hold up with technology", type: "close-verb", why: "Hold up означає затримувати або грабувати." },
+                    { text: "stay up with technology", type: "meaning", why: "Stay up означає 'не лягати спати'." }
+                ]
+            },
+            {
+                id: 6,
+                target: "cutting-edge technology",
+                starred: true,
+                translation: "передова / найсучасніша технологія",
+                example: "The new IT hospital relies on cutting-edge technology to perform surgical operations.",
+                trap: "Пастка: Прикметник cutting-edge (буквально 'на лезі'). Не плутати з sharp чи front.",
+                sentence: "The new research institute is equipped with _____ to develop modern vaccines.",
+                answer: "cutting-edge technology",
+                clue: "develop modern vaccines",
+                options: [
+                    { text: "cutting-edge technology", type: "correct", why: "Cutting-edge означає найсучасніший, інноваційний." },
+                    { text: "sharp-edge technology", type: "calque", why: "Буквальний переклад 'гострий край', фраза не існує." },
+                    { text: "front-line technology", type: "other-collocation", why: "Front-line стосується передової лінії передовою в медицині/війську, не техніки." },
+                    { text: "top-side technology", type: "meaning", why: "Неіснуюче лексичне поєднання." }
+                ]
+            },
+            {
+                id: 7,
+                target: "artificial intelligence",
+                starred: false,
+                translation: "штучний інтелект",
+                example: "Many apps now use artificial intelligence to translate texts in real time.",
+                trap: "Пастка: Вживається прикметник artificial (не unreal чи fake).",
+                sentence: "Danylo uses tools powered by _____ to check his grammar and vocabulary.",
+                answer: "artificial intelligence",
+                clue: "check his grammar",
+                options: [
+                    { text: "artificial intelligence", type: "correct", why: "Сталий науково-технічний термін AI." },
+                    { text: "unreal intelligence", type: "meaning", why: "Unreal означає 'нереальний/казковий'." },
+                    { text: "synthetic intelligence", type: "other-collocation", why: "Synthetic використовується для тканин чи матеріалів." },
+                    { text: "fake intelligence", type: "close-verb", why: "Fake — підроблений чи фальшивий у негативному сенсі." }
+                ]
+            },
+            {
+                id: 8,
+                target: "scientific breakthrough",
+                starred: true,
+                translation: "науковий прорив",
+                example: "The discovery of peniciline was a major scientific breakthrough in medicine.",
+                trap: "Пастка: Іменник breakthrough (одне слово). Не break-out чи break-up.",
+                sentence: "Finding a new green energy source was considered a major _____ of the decade.",
+                answer: "scientific breakthrough",
+                clue: "green energy source",
+                options: [
+                    { text: "scientific breakthrough", type: "correct", why: "Breakthrough — значний успіх чи відкриття." },
+                    { text: "scientific break-up", type: "meaning", why: "Break-up означає розрив стосунків." },
+                    { text: "scientific break-out", type: "meaning", why: "Break-out означає втечу з в'язниці або спалах." },
+                    { text: "scientific break-in", type: "meaning", why: "Break-in — це незаконне проникнення/злам." }
+                ]
+            },
+            {
+                id: 9,
+                target: "carry out an experiment",
+                starred: false,
+                translation: "проводити експеримент",
+                example: "Students carry out an experiment in the chemistry lab every Tuesday.",
+                trap: "Пастка: Із фразових дієслів у тестах вимагають CARRY OUT. (Увага: do та conduct також правильні, тому їх немає серед дистракторів!). Пастка — make/produce.",
+                sentence: "Our biology class will _____ on plant growth next week in the school laboratory.",
+                answer: "carry out an experiment",
+                clue: "school laboratory",
+                options: [
+                    { text: "carry out an experiment", type: "correct", why: "Carry out — класичний фразовий термін для експериментів." },
+                    { text: "make an experiment", type: "calque", why: "З experiment НЕ вживається дієслово make!" },
+                    { text: "produce an experiment", type: "close-verb", why: "Produce означає виробляти товари на фабриці." },
+                    { text: "create an experiment", type: "meaning", why: "Create вживається про мистецтво чи нові речі, а не досліди." }
+                ]
+            },
+            {
+                id: 10,
+                target: "groundbreaking research",
+                starred: true,
+                translation: "новаторське / революційне дослідження",
+                example: "The professors published groundbreaking research on climate change.",
+                trap: "Пастка: Groundbreaking (новаторський). Не earth-shaking чи land-breaking.",
+                sentence: "The university team conducted _____ into genetics that won an international award.",
+                answer: "groundbreaking research",
+                clue: "won an international award",
+                options: [
+                    { text: "groundbreaking research", type: "correct", why: "Groundbreaking research — революційне дослідження." },
+                    { text: "earth-shaking research", type: "calque", why: "Earth-shaking — калька, в англійській вживається для землетрусів." },
+                    { text: "land-breaking research", type: "meaning", why: "Land-breaking — вигадане поєднання." },
+                    { text: "soil-opening research", type: "calque", why: "Безглузда калька з українського 'розкриття ґрунту'." }
+                ]
+            },
+            {
+                id: 11,
+                target: "state-of-the-art equipment",
+                starred: true,
+                translation: "найсучасніше / ультрасучасне обладнання",
+                example: "Our school laboratory has state-of-the-art equipment for modern physics lessons.",
+                trap: "Пастка: Фраза пишeться через дефіси (state-of-the-art). Equipment — неузгоджуваний іменник (без -s!).",
+                sentence: "The new hospital received _____ to help doctors detect illnesses much faster.",
+                answer: "state-of-the-art equipment",
+                clue: "detect illnesses much faster",
+                options: [
+                    { text: "state-of-the-art equipment", type: "correct", why: "State-of-the-art — передовий/ультрасучасний." },
+                    { text: "last-art equipment", type: "calque", why: "Прямий переклад 'останнє мистецтво' — некоректно." },
+                    { text: "state-of-art equipments", type: "other-collocation", why: "Equipment не має форми множини (-s)." },
+                    { text: "top-art equipment", type: "meaning", why: "Вигаданий прикметник." }
+                ]
+            },
+            {
+                id: 12,
+                target: "make a discovery",
+                starred: false,
+                translation: "зробити відкриття",
+                example: "Astronomers hope to make a discovery about life on other planets.",
+                trap: "Пастка: З discovery вживається MAKE (НЕ do чи perform!).",
+                sentence: "Scientists hope to _____ that will help clean plastic from the oceans.",
+                answer: "make a discovery",
+                clue: "clean plastic from the oceans",
+                options: [
+                    { text: "make a discovery", type: "correct", why: "З discovery використовується дієслово make." },
+                    { text: "do a discovery", type: "close-verb", why: "Do a discovery — найпоширеніша помилка учнів!" },
+                    { text: "perform a discovery", type: "meaning", why: "Perform вживається для експериментів чи дій на сцені." },
+                    { text: "open a discovery", type: "calque", why: "Калька з укр. 'відкрити відкриття'." }
+                ]
+            },
+            {
+                id: 13,
+                target: "technological advances",
+                starred: true,
+                translation: "технологічні досягнення / прогрес",
+                example: "Recent technological advances have made renewable energy much cheaper.",
+                trap: "Пастка: Іменник advances (досягнення). Не steps чи moves.",
+                sentence: "Thanks to recent _____, people can now communicate instantly across the globe.",
+                answer: "technological advances",
+                clue: "communicate instantly across the globe",
+                options: [
+                    { text: "technological advances", type: "correct", why: "Technological advances — прогрес/досягнення у техніці." },
+                    { text: "technological steps", type: "calque", why: "Калька 'технологічні кроки'." },
+                    { text: "technological growths", type: "close-verb", why: "Growth вживається в однині про економіку чи рослини." },
+                    { text: "technological walks", type: "meaning", why: "Невідповідне значення." }
+                ]
+            },
+            {
+                id: 14,
+                target: "the digital age",
+                starred: false,
+                translation: "цифрова ера / доба",
+                example: "Growing up in the digital age, teenagers learn to use smartphones very quickly.",
+                trap: "Пастка: Вживається артикль THE та прикметник digital (а не numeric чи computer).",
+                sentence: "In _____, it is essential to learn basic programming and cyber hygiene skills.",
+                answer: "the digital age",
+                clue: "basic programming and cyber hygiene",
+                options: [
+                    { text: "the digital age", type: "correct", why: "Сучасна ера технологій називається the digital age." },
+                    { text: "the numeric age", type: "meaning", why: "Numeric стосується математичних чисел, а не технологій." },
+                    { text: "the electronic period", type: "other-collocation", why: "Поняття звучить штучно, не є усталеним терміном." },
+                    { text: "the computer century", type: "calque", why: "Калька з укр. 'комп'ютерне століття'." }
+                ]
+            },
+            {
+                id: 15,
+                target: "take up a hobby",
+                starred: false,
+                translation: "зайнятися новим хобі",
+                example: "Max decided to take up a hobby during the summer holidays to stay active.",
+                trap: "Пастка: Фразове дієслово TAKE UP. Не start in чи take on.",
+                sentence: "Olga wants to _____ like painting or photography to relax after school.",
+                answer: "take up a hobby",
+                clue: "painting or photography",
+                options: [
+                    { text: "take up a hobby", type: "correct", why: "Take up — почати регулярно займатися новим хобі." },
+                    { text: "take on a hobby", type: "preposition", why: "Take on означає брати на себе відповідальність/роботу." },
+                    { text: "start up a hobby", type: "close-verb", why: "Start up вживається про відкриття бізнесу." },
+                    { text: "make up a hobby", type: "meaning", why: "Make up означає вигадувати вигадану історію чи миритися." }
+                ]
+            },
+            {
+                id: 16,
+                target: "read for pleasure",
+                starred: false,
+                translation: "читати для задоволення",
+                example: "It is important to read for pleasure rather than just for school tests.",
+                trap: "Пастка: Прийменник FOR (for pleasure, а не for fun чи to pleasure).",
+                sentence: "Anna likes to _____ before bed rather than scrolling through her phone.",
+                answer: "read for pleasure",
+                clue: "scrolling through her phone",
+                options: [
+                    { text: "read for pleasure", type: "correct", why: "Read for pleasure — читати для власної насолоди." },
+                    { text: "read for joyness", type: "calque", why: "Слова joyness не існує, правильний іменник pleasure." },
+                    { text: "read to pleasure", type: "preposition", why: "Після read потрібен прийменник for з іменником." },
+                    { text: "read with gladness", type: "meaning", why: "Застаріле й неприродне поєднання." }
+                ]
+            },
+            {
+                id: 17,
+                target: "protect personal data",
+                starred: false,
+                translation: "захищати персональні дані",
+                example: "You should use strong passwords to protect personal data online.",
+                trap: "Пастка: Прикметник personal (не private чи own у цьому терміні).",
+                sentence: "Using two-factor authentication is a good way to _____ from cyber criminals.",
+                answer: "protect personal data",
+                clue: "two-factor authentication",
+                options: [
+                    { text: "protect personal data", type: "correct", why: "Офіційний термін кибербезпеки — personal data." },
+                    { text: "save own data", type: "meaning", why: "Save означає зберігати файл на диску, а не захищати." },
+                    { text: "defend private info", type: "other-collocation", why: "Defend вживається про фізичний захист або суд." },
+                    { text: "keep secret data", type: "close-verb", why: "Keep secret data має відтінок 'приховувати таємниці'." }
+                ]
+            },
+            {
+                id: 18,
+                target: "download an app",
+                starred: false,
+                translation: "завантажити додаток",
+                example: "You can download an app on your smartphone to track your daily steps.",
+                trap: "Пастка: Дієслово download (а не load чи get in).",
+                sentence: "Danylo had to _____ to check the bus schedule in his city.",
+                answer: "download an app",
+                clue: "bus schedule on smartphone",
+                options: [
+                    { text: "download an app", type: "correct", why: "Download an app — скачати додаток з інтернету." },
+                    { text: "upload an app", type: "meaning", why: "Upload означає вивантажувати ФАЙЛ У мережу, а не скачувати." },
+                    { text: "load an app", type: "close-verb", why: "Load означає запускати або завантажувати в пам'ять." },
+                    { text: "take down an app", type: "preposition", why: "Take down — це знімати або видаляти додаток з магазину." }
+                ]
+            },
+            {
+                id: 19,
+                target: "update software",
+                starred: false,
+                translation: "оновлювати програмне забезпечення",
+                example: "Remember to update software regularly to prevent security viruses.",
+                trap: "Пастка: Дієслово UPDATE (не upgrade чи renew для ПЗ).",
+                sentence: "To protect your laptop from viruses, you should always _____ on time.",
+                answer: "update software",
+                clue: "protect laptop from viruses",
+                options: [
+                    { text: "update software", type: "correct", why: "Update software — оновлювати ПЗ до нової версії." },
+                    { text: "renew software", type: "meaning", why: "Renew вживається про підписки, паспорти чи контракти." },
+                    { text: "refresh software", type: "close-verb", why: "Refresh означає оновити сторінку браузера (F5)." },
+                    { text: "make software modern", type: "calque", why: "Неприродний описовий вираз." }
+                ]
+            },
+            {
+                id: 20,
+                target: "have an impact on",
+                starred: false,
+                translation: "мати вплив на",
+                example: "Modern technology can have a huge impact on student learning habits.",
+                trap: "Пастка: Прийменник ON! Завжди 'impact ON somebody/something' (НЕ in, at чи to).",
+                sentence: "Social media can _____ teenager's self-esteem if used excessively.",
+                answer: "have an impact on",
+                clue: "teenager's self-esteem",
+                options: [
+                    { text: "have an impact on", type: "correct", why: "Після іменника impact завжди стоїть прийменник ON." },
+                    { text: "have an impact in", type: "preposition", why: "Хибний прийменник in." },
+                    { text: "have an impact to", type: "preposition", why: "Хибний прийменник to." },
+                    { text: "make an impact at", type: "preposition", why: "Хибний прийменник at." }
+                ]
+            },
+            {
+                id: 21,
+                target: "rely on technology",
+                starred: false,
+                translation: "покладатися на технології",
+                example: "We should not rely on technology for everything; basic human math is still needed.",
+                trap: "Пастка: Прийменник ON! Завжди 'rely ON' (не at, in чи with).",
+                sentence: "Many modern offices _____ so much that a power cut stops all work.",
+                answer: "rely on technology",
+                clue: "power cut stops all work",
+                options: [
+                    { text: "rely on technology", type: "correct", why: "Rely ON — покладатися/залежати від чогось." },
+                    { text: "rely at technology", type: "preposition", why: "Хибний прийменник at." },
+                    { text: "rely in technology", type: "preposition", why: "Хибний прийменник in." },
+                    { text: "rely with technology", type: "preposition", why: "Хибний прийменник with." }
+                ]
+            },
+            {
+                id: 22,
+                target: "broaden one's horizons",
+                starred: true,
+                translation: "розширювати кругозір",
+                example: "Traveling to new countries is a great way to broaden your horizons.",
+                trap: "Пастка: Дієслово broaden (не widen чи open) + іменник horizons (у множині!).",
+                sentence: "Reading scientific articles helps students to _____ and think critically.",
+                answer: "broaden their horizons",
+                clue: "think critically and read articles",
+                options: [
+                    { text: "broaden their horizons", type: "correct", why: "Broaden one's horizons — фразеологічний стандарт." },
+                    { text: "open their views", type: "calque", why: "Калька з укр. 'відкривати погляди'." },
+                    { text: "widen their eyes", type: "meaning", why: "Widen eyes означає здивовано витріщати очі." },
+                    { text: "expand their mindsets", type: "other-collocation", why: "Невідповідна лексична сполучуваність." }
+                ]
+            },
+            {
+                id: 23,
+                target: "develop a skill",
+                starred: false,
+                translation: "розвивати навичку",
+                example: "It takes time and daily practice to develop a useful skill like coding.",
+                trap: "Пастка: Дієслово DEVELOP (не raise чи grow) + іменник skill.",
+                sentence: "Max spends hours practicing guitar because he wants to _____ in music.",
+                answer: "develop a skill",
+                clue: "practicing guitar",
+                options: [
+                    { text: "develop a skill", type: "correct", why: "Develop a skill — опановувати/розвивати навичку." },
+                    { text: "grow a skill", type: "close-verb", why: "Grow вживається для рослин або дітей." },
+                    { text: "raise a skill", type: "meaning", why: "Raise вживається для підйому цін або виховання дітей." },
+                    { text: "make a skill", type: "calque", why: "Make a skill — стилістично некоректний вираз." }
+                ]
+            },
+            {
+                id: 24,
+                target: "virtual reality",
+                starred: false,
+                translation: "віртуальна реальність",
+                example: "Virtual reality headsets are becoming very popular in gaming and science.",
+                trap: "Пастка: Прикметник virtual (не digital чи fake). VR — Virtual Reality.",
+                sentence: "Using a _____ headset allows users to feel like they are inside a computer game.",
+                answer: "virtual reality",
+                clue: "headset and computer game",
+                options: [
+                    { text: "virtual reality", type: "correct", why: "Virtual reality (VR) — віртуальна реальність." },
+                    { text: "digital reality", type: "other-collocation", why: "Digital reality не використовується як назва технології VR." },
+                    { text: "unreal reality", type: "meaning", why: "Unreal reality — тавтологічна та вигадана фраза." },
+                    { text: "false reality", type: "close-verb", why: "False reality вживається про психологічні ілюзії." }
+                ]
+            },
+            {
+                id: 25,
+                target: "free of charge",
+                starred: false,
+                translation: "безкоштовно",
+                example: "Students can visit the science museum free of charge every Sunday.",
+                trap: "Пастка: Прийменник OF (free OF charge, а не free from чи free for).",
+                sentence: "The new educational software is available _____ for all Ukrainian schools.",
+                answer: "free of charge",
+                clue: "available for all schools",
+                options: [
+                    { text: "free of charge", type: "correct", why: "Free of charge — сталий офіційний вираз 'безкоштовно'." },
+                    { text: "free for charge", type: "preposition", why: "Хибний прийменник for." },
+                    { text: "free from charge", type: "preposition", why: "Хибний прийменник from." },
+                    { text: "free with payment", type: "meaning", why: "Протилежне значення (з оплатою)." }
+                ]
+            }
+        ];
+
+        /* APP STATE */
+        let state = {
+            activeTab: 'learn',
+            leitnerBoxes: [[], [], []], // Box 0 (Needs work), Box 1 (Medium), Box 2 (Mastered)
+            currentCardIndex: 0,
+            practiceIndex: 0,
+            typeIndex: 0,
+            testIndex: 0,
+            testAnswers: [],
+            trapStats: {
+                calque: 0,
+                'close-verb': 0,
+                preposition: 0,
+                'other-collocation': 0,
+                meaning: 0
+            }
+        };
+
+        /* LOCALSTORAGE WRAPPER */
+        function saveProgress() {
+            try {
+                localStorage.setItem('nmt_trainer_progress', JSON.stringify({
+                    leitnerBoxes: state.leitnerBoxes
+                }));
+            } catch (e) {
+                console.warn('LocalStorage unavailable, running in memory mode.');
+            }
+        }
+
+        function loadProgress() {
+            try {
+                const saved = localStorage.getItem('nmt_trainer_progress');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (parsed.leitnerBoxes && parsed.leitnerBoxes.length === 3) {
+                        state.leitnerBoxes = parsed.leitnerBoxes;
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.warn('LocalStorage load failed.');
+            }
+            // Fallback initialization
+            state.leitnerBoxes = [collocationsData.map(c => c.id), [], []];
+        }
+
+        /* TAB SWITCHING */
+        function switchTab(tabId) {
+            state.activeTab = tabId;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const panel = document.getElementById(`panel-${tabId}`);
+            if (panel) panel.classList.add('active');
+
+            if (tabId === 'learn') renderFlashcard();
+            if (tabId === 'practice') renderPracticeQuestion();
+            if (tabId === 'type') renderTypeQuestion();
+            if (tabId === 'test') renderTestQuestion();
+        }
+
+        /* TAB 1: LEITNER FLASHCARDS */
+        function getCurrentLearnCard() {
+            // Priority to Box 0, then Box 1, then Box 2
+            for (let b = 0; b < 3; b++) {
+                if (state.leitnerBoxes[b].length > 0) {
+                    const cardId = state.leitnerBoxes[b][state.currentCardIndex % state.leitnerBoxes[b].length];
+                    return { item: collocationsData.find(c => c.id === cardId), boxIndex: b };
+                }
+            }
+            return { item: collocationsData[0], boxIndex: 0 };
+        }
+
+        function renderFlashcard() {
+            const box = document.getElementById('flashcard-box');
+            const { item, boxIndex } = getCurrentLearnCard();
+
+            box.innerHTML = `
+                <div class="flashcard">
+                    ${item.starred ? '<span class="badge-starred">B2 ★ складніша</span>' : ''}
+                    <div class="english-phrase">${item.target}</div>
+                    <div class="ukrainian-translation">${item.translation}</div>
+                    <div class="example-sentence"><strong>Приклад:</strong> ${item.example}</div>
+                    <div class="trap-info">💡 <strong>Увага на НМТ:</strong> ${item.trap}</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                        Рівень засвоєння: Ящик ${boxIndex + 1} з 3
+                    </div>
+                </div>
+                <div class="flashcard-controls">
+                    <button class="btn btn-error" onclick="handleCardAnswer(false)">Ще раз (Повторити)</button>
+                    <button class="btn btn-success" onclick="handleCardAnswer(true)">Згадав (Знаю)</button>
+                </div>
+            `;
+        }
+
+        function handleCardAnswer(remembered) {
+            const { item, boxIndex } = getCurrentLearnCard();
+
+            // Move in Leitner Boxes
+            state.leitnerBoxes[boxIndex] = state.leitnerBoxes[boxIndex].filter(id => id !== item.id);
+
+            if (remembered) {
+                const nextBox = Math.min(boxIndex + 1, 2);
+                state.leitnerBoxes[nextBox].push(item.id);
+            } else {
+                state.leitnerBoxes[0].push(item.id); // Reset to box 0
+            }
+
+            state.currentCardIndex++;
+            saveProgress();
+            renderFlashcard();
+        }
+
+        /* TAB 2: PRACTICE MODE */
+        function renderPracticeQuestion() {
+            const box = document.getElementById('practice-question-box');
+            const q = collocationsData[state.practiceIndex];
+            document.getElementById('practice-num').innerText = state.practiceIndex + 1;
+
+            // Prepare shuffled options
+            if (!q.shuffledOptions) {
+                q.shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
+            }
+
+            const sentenceWithBlank = q.sentence.replace('_____', `<span class="blank">_____</span>`);
+
+            box.innerHTML = `
+                <div class="question-text">${sentenceWithBlank}</div>
+                <div class="options-grid" id="practice-options">
+                    ${q.shuffledOptions.map((opt) => `
+                        <button class="option-btn" onclick="checkPracticeAnswer('${opt.text.replace(/'/g, "\\'")}', this)">
+                            ${opt.text}
+                        </button>
+                    `).join('')}
+                </div>
+                <div id="practice-explanation"></div>
+                <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                    <button class="btn btn-primary" onclick="nextPracticeQuestion()">Наступне завдання →</button>
+                </div>
+            `;
+        }
+
+        function checkPracticeAnswer(selectedText, btnElement) {
+            const q = collocationsData[state.practiceIndex];
+            const buttons = document.querySelectorAll('#practice-options .option-btn');
+            buttons.forEach(b => b.disabled = true);
+
+            const isCorrect = selectedText === q.options.find(o => o.type === 'correct').text;
+
+            if (isCorrect) {
+                btnElement.classList.add('selected-correct');
+            } else {
+                btnElement.classList.add('selected-incorrect');
+                // Highlight correct
+                buttons.forEach(b => {
+                    if (b.innerText.trim() === q.options.find(o => o.type === 'correct').text) {
+                        b.classList.add('selected-correct');
+                    }
+                });
+            }
+
+            // Highlight clue in sentence
+            const sentenceWithClue = q.sentence.replace('_____', `<strong style="color:var(--success-color);">${q.answer}</strong>`)
+                .replace(q.clue, `<span class="clue-highlight">${q.clue}</span>`);
+
+            const expBox = document.getElementById('practice-explanation');
+            expBox.innerHTML = `
+                <div class="explanation-box">
+                    <div><strong>Результат:</strong> ${isCorrect ? '✅ Вірно!' : '❌ Помилка!'}</div>
+                    <div><strong>Речення з підказкою:</strong> ${sentenceWithClue}</div>
+                    <div><strong>Слово-підказка у контексті:</strong> <span class="clue-highlight">${q.clue}</span></div>
+                    <ul class="explanation-list">
+                        ${q.shuffledOptions.map(opt => `
+                            <li><strong>${opt.text}:</strong> ${opt.why}</li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        function nextPracticeQuestion() {
+            state.practiceIndex = (state.practiceIndex + 1) % collocationsData.length;
+            renderPracticeQuestion();
+        }
+
+        /* TAB 3: TYPE PRACTICE MODE */
+        function renderTypeQuestion() {
+            const box = document.getElementById('type-question-box');
+            const q = collocationsData[state.typeIndex];
+            document.getElementById('type-num').innerText = state.typeIndex + 1;
+
+            const sentenceWithBlank = q.sentence.replace('_____', `<span class="blank">_____</span>`);
+
+            box.innerHTML = `
+                <div class="question-text">${sentenceWithBlank}</div>
+                <div class="type-input-group">
+                    <input type="text" id="type-user-input" class="type-input" placeholder="Введіть правильну фразу англійською..." autocomplete="off">
+                    <button class="btn btn-primary" onclick="checkTypeAnswer()">Перевірити відповідь</button>
+                </div>
+                <div id="type-feedback"></div>
+                <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                    <button class="btn btn-secondary" onclick="nextTypeQuestion()">Наступне завдання →</button>
+                </div>
+            `;
+
+            // Keydown listener for Enter key
+            document.getElementById('type-user-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') checkTypeAnswer();
+            });
+        }
+
+        function checkTypeAnswer() {
+            const q = collocationsData[state.typeIndex];
+            const input = document.getElementById('type-user-input');
+            const feedback = document.getElementById('type-feedback');
+
+            if (!input || input.disabled) return;
+
+            const userVal = input.value.trim().toLowerCase();
+            const correctVal = q.target.toLowerCase();
+
+            input.disabled = true;
+
+            if (userVal === correctVal) {
+                feedback.innerHTML = `
+                    <div class="explanation-box" style="border-color: var(--success-color);">
+                        <strong style="color: var(--success-color);">✅ Чудово! Абсолютно правильно!</strong>
+                        <p>${q.sentence.replace('_____', `<strong>${q.target}</strong>`)}</p>
+                    </div>
+                `;
+            } else {
+                feedback.innerHTML = `
+                    <div class="explanation-box" style="border-color: var(--error-color);">
+                        <strong style="color: var(--error-color);">❌ Незовсім вірно.</strong>
+                        <p>Ваша відповідь: <s>${input.value}</s></p>
+                        <p>Правильна відповідь: <strong style="color: var(--success-color);">${q.target}</strong></p>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">${q.trap}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function nextTypeQuestion() {
+            state.typeIndex = (state.typeIndex + 1) % collocationsData.length;
+            renderTypeQuestion();
+        }
+
+        /* TAB 4: TEST MODE */
+        function renderTestQuestion() {
+            const box = document.getElementById('test-question-box');
+            if (state.testIndex >= collocationsData.length) {
+                showTestResults();
+                return;
+            }
+
+            const q = collocationsData[state.testIndex];
+            document.getElementById('test-num').innerText = state.testIndex + 1;
+
+            if (!q.shuffledOptions) {
+                q.shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
+            }
+
+            const sentenceWithBlank = q.sentence.replace('_____', `<span class="blank">_____</span>`);
+
+            box.innerHTML = `
+                <div class="question-text">${sentenceWithBlank}</div>
+                <div class="options-grid">
+                    ${q.shuffledOptions.map((opt) => `
+                        <button class="option-btn" onclick="selectTestAnswer('${opt.text.replace(/'/g, "\\'")}', '${opt.type}')">
+                            ${opt.text}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function selectTestAnswer(selectedText, type) {
+            const q = collocationsData[state.testIndex];
+            const isCorrect = selectedText === q.options.find(o => o.type === 'correct').text;
+
+            state.testAnswers.push({
+                questionId: q.id,
+                target: q.target,
+                selected: selectedText,
+                isCorrect: isCorrect,
+                trapType: isCorrect ? null : type
+            });
+
+            if (!isCorrect && type) {
+                state.trapStats[type] = (state.trapStats[type] || 0) + 1;
+            }
+
+            state.testIndex++;
+            renderTestQuestion();
+        }
+
+        function showTestResults() {
+            document.getElementById('test-content').classList.add('hidden');
+            const resultsBox = document.getElementById('test-results');
+            resultsBox.classList.remove('hidden');
+
+            const total = collocationsData.length;
+            const correctCount = state.testAnswers.filter(a => a.isCorrect).length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('score-circle').innerText = `${percentage}%`;
+            document.getElementById('stat-correct').innerText = `${correctCount} / ${total}`;
+
+            // Determine top mistake trap
+            let topTrap = '-';
+            let maxCount = 0;
+            const trapNames = {
+                'preposition': 'Прийменники (preposition traps)',
+                'calque': 'Калька з української (calque traps)',
+                'close-verb': 'Невірно підібране дієслово (close-verb traps)',
+                'other-collocation': 'Нестандартна фраза (other collocation)',
+                'meaning': 'Значення слова (meaning errors)'
+            };
+
+            for (const [key, count] of Object.entries(state.trapStats)) {
+                if (count > maxCount) {
+                    maxCount = count;
+                    topTrap = trapNames[key] || key;
+                }
+            }
+            document.getElementById('stat-trap').innerText = topTrap;
+
+            // Mistakes list
+            const mistakesList = document.getElementById('mistakes-list');
+            const incorrects = state.testAnswers.filter(a => !a.isCorrect);
+
+            if (incorrects.length === 0) {
+                mistakesList.innerHTML = `<li style="color: var(--success-color);">🎉 Бездоганно! Усі 25 відповідей правильні!</li>`;
+            } else {
+                mistakesList.innerHTML = incorrects.map(i => `
+                    <li><strong>${i.target}</strong> (Ваша відповідь: <s>${i.selected}</s>)</li>
+                `).join('');
+            }
+        }
+
+        function copyResultsForTeacher() {
+            const correctCount = state.testAnswers.filter(a => a.isCorrect).length;
+            const percentage = Math.round((correctCount / 25) * 100);
+            const incorrects = state.testAnswers.filter(a => !a.isCorrect);
+
+            let report = `=== ЗВІТ НМТ АНГЛІЙСЬКА (Дозвілля, наука, технології) ===\n`;
+            report += `Результат: ${correctCount}/25 (${percentage}%)\n`;
+
+            if (incorrects.length > 0) {
+                report += `Помилки у фразах:\n`;
+                incorrects.forEach(i => {
+                    report += `- ${i.target} (Обрано: ${i.selected})\n`;
+                });
+            } else {
+                report += `Помилок немає! Всі відповіді вірні.\n`;
+            }
+
+            // Clipboard fallback strategy
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(report).then(() => showToast());
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = report;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast();
+                } catch (err) {
+                    alert("Не вдалося скопіювати текст.");
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function restartTest() {
+            state.testIndex = 0;
+            state.testAnswers = [];
+            state.trapStats = { calque: 0, 'close-verb': 0, preposition: 0, 'other-collocation': 0, meaning: 0 };
+            document.getElementById('test-results').classList.add('hidden');
+            document.getElementById('test-content').classList.remove('hidden');
+            renderTestQuestion();
+        }
+
+        /* INITIALIZATION */
+        window.onload = function() {
+            loadProgress();
+            renderFlashcard();
+        };
+    </script>
+</body>
+</html>
